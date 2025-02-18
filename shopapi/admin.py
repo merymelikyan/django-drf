@@ -3,7 +3,8 @@ from django.contrib import admin
 from .models import (
     Category,
     Product,
-    ProductImages
+    ProductImages,
+    Subscriber
 )
 
 
@@ -44,3 +45,11 @@ class ProductAdmin(admin.ModelAdmin):
     ]
     prepopulated_fields = {"slug": ["title_en"]}
     inlines = [ProductImagesInline]
+
+
+@admin.register(Subscriber)
+class SubscriberAdmin(admin.ModelAdmin):
+    list_display = ["id", "name", "email", "created"]
+    list_display_links = ["name", "email"]
+    search_fields = ["name", "email"]
+    list_filter = ["name", "created"]

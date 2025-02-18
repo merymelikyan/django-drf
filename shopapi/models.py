@@ -99,3 +99,16 @@ class ProductImages(models.Model):
 
     def __str__(self):
         return self.product.title_hy
+    
+    
+class Subscriber(models.Model):
+    name = models.CharField(max_length=255, verbose_name="Անուն")
+    email = models.EmailField(unique=True, verbose_name="Էլ․ հասցե։")
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Բաժանորդ"
+        verbose_name_plural = "Բաժանորդներ"
+
+    def __str__(self):
+        return self.name    
