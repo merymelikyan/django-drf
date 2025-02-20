@@ -25,7 +25,7 @@ class ProductImagesInline(admin.TabularInline):
 class ProductAdmin(admin.ModelAdmin):
     list_display = [
         "id", "title_hy", "title_ru",
-        "title_en", "slug", "reviews_qty", "stars_qty",
+        "title_en",  "category", "slug", "reviews_qty", "stars_qty",
         "price", "available", "hidden"
     ]
     list_display_links = ["title_hy", "title_ru", "title_en"]

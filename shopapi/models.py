@@ -53,13 +53,13 @@ class Product(models.Model):
         null=True
     )
     slug = models.SlugField(unique=True, verbose_name="Ցուցիչ:")
-    price = models.IntegerField(default=0)
+    price = models.FloatField(default=0)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     available = models.BooleanField(default=True)
     hidden = models.BooleanField(default=False)
-    reviews_qty = models.IntegerField(default=0)
-    stars_qty = models.IntegerField(
+    reviews_qty = models.FloatField(default=0)
+    stars_qty = models.FloatField(
         default=0,
         validators=[
             MaxValueValidator(5),
@@ -84,9 +84,10 @@ class ProductImages(models.Model):
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
-        verbose_name="Ապրանքի Նկարներ։"
+        verbose_name="Ապրանքի Նկարներ։",
+        related_name="images"
     )
-    image = models.ImageField(
+    images = models.ImageField(
         upload_to="products/",
         verbose_name="Ապրանքի նկար:",
         blank=True,
